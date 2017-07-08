@@ -2,7 +2,7 @@
 
 
 //Validaciones del formulario de contacto para el campo textarea
-let mensaje = document.getElementsByTagName("textarea");
+var mensaje = document.getElementsByTagName("textarea");
 
 
 function contarPalabras(){
@@ -19,7 +19,7 @@ mensaje[0].addEventListener('blur', contarPalabras);
 
 
 //Validaciones para mi botón
-let formulario = document.getElementById("contacto");
+var formulario = document.getElementById("contacto");
 
 function enviar(event){
     this.setAttribute('disabled', "");

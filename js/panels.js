@@ -1,7 +1,8 @@
 `use strict` 
 
+
 //Contenedor de paneles flexible para la sección de Experiencia Profesional
-let panels = document.querySelectorAll('.panel');
+var panels = document.querySelectorAll('.panel');
 
 
 
@@ -11,7 +12,11 @@ function toggleOpen() {
         this.classList.remove('open');    
         return;
     }
-    panels.forEach(panel => panel.classList.remove('open'));
+
+    Array.prototype.forEach.call (panels, function (panel) {
+        panel.classList.remove('open');
+    });
+    
     this.classList.toggle('open');
 
 }
@@ -24,7 +29,10 @@ function toggleActive(e) {
 }
 
 //Añadimos dos eventos Javascript sobre cada uno de los paneles. Uno para el click y otro para el final de la transición
-panels.forEach(panel => {
+//Se tiene que hacer así para que el forEach funcione en Explorer y Edge
+
+Array.prototype.forEach.call (panels, function (panel) {
+
     panel.addEventListener('click', toggleOpen); 
     panel.addEventListener('transitionend', toggleActive);
 });

@@ -1,4 +1,4 @@
-`use strict`
+`use strict` 
 
 var navbarItems = document.getElementsByClassName('navbar-item');
 
@@ -17,7 +17,12 @@ for(var i = 0; i < navbarItems.length; i++){
 
 function limpiarEstilosMenu(){
     var listaItems = document.querySelectorAll('.navbar-item');
-    listaItems.forEach(item => item.classList.remove('active'));
+
+    //Se tiene que hacer así para que el forEach funcione en Explorer y Edge
+    Array.prototype.forEach.call (listaItems, function (item) {
+        item.classList.remove('active')    
+    });
+
 }
 
 
