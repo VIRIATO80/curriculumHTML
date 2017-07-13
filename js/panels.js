@@ -1,5 +1,3 @@
-`use strict` 
-
 
 //Contenedor de paneles flexible para la sección de Experiencia Profesional
 var panels = document.querySelectorAll('.panel');

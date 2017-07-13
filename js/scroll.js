@@ -1,5 +1,3 @@
-`use strict` 
-
 var navbarItems = document.getElementsByClassName('navbar-item');
 
 for(var i = 0; i < navbarItems.length; i++){
@@ -39,7 +37,12 @@ function getElementByIdAndScroll(id){
 
 function scrollToElement(element){
     var jump = (element.getBoundingClientRect().top - 70) * 0.2;
-    document.body.scrollTop += jump;
+
+    var isIE = /*@cc_on!@*/false || !!document.documentMode;
+    if(isIE)
+        document.documentElement.scrollTop += jump;
+    else
+        document.body.scrollTop += jump;
 
     if(!element.lastJump || element.lastJump > Math.abs(jump)){
         element.lastJump = Math.abs(jump);        
@@ -49,6 +52,31 @@ function scrollToElement(element){
     }else{
        element.lastJump = null; 
     }
-
-
 }
+
+//Bloque para el scrollspy
+
+var section = document.getElementsByTagName('section');
+var sections = {};
+var i = 0;
+
+//Portada se considera como posición 0
+sections['portada'] = 0;
+
+//Se recolectan las posiciones de todas las secciones (más portada)y se guardan en una colección
+Array.prototype.forEach.call(section, function(e) {
+    sections[e.id] = e.offsetTop-90;
+});
+
+window.onscroll = function() {
+    var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+
+    for (i in sections) {
+        if (sections[i] <= scrollPosition) {
+            limpiarEstilosMenu();
+            document.getElementById(i+'-menu').classList.add('active');
+            //document.querySelector('.active').setAttribute('class', ' ');
+            //document.querySelector('a[href*=' + i + ']').setAttribute('class', 'active');
+        }
+    }
+};

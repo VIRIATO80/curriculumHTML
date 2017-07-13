@@ -12,7 +12,7 @@
 </head>
 <body>
     <!--Cabecera-->
-    <header class="header">
+    <header id="portada" class="header">
         <div class="title">
             <h1 >Javier Lindo</h1>
             <p class="subtitle">Full Stack Developer</p>            
@@ -25,22 +25,22 @@
     <!--Menú navegación-->
     <nav class="navbar" >
         <ul class="navbar-list">
-            <li class="navbar-item active">
+            <li id="portada-menu" class="navbar-item active">
                 <a href="#">Portada</a>
             </li>
-            <li class="navbar-item">
+            <li id="quien-soy-menu" class="navbar-item">
                 <a href="#quien-soy">Quien soy</a>
             </li>
-            <li class="navbar-item">
+            <li id="estudios-menu" class="navbar-item">
                 <a href="#estudios">Estudios</a>
             </li>
-            <li class="navbar-item">
+            <li id="experiencia-menu" class="navbar-item">
                 <a href="#experiencia">Experiencia</a>
             </li>
-            <li class="navbar-item">
+            <li id="sobremi-menu" class="navbar-item">
                 <a href="#sobremi">Sobre m&iacute;</a>
             </li>
-            <li class="navbar-item">
+            <li id="contacto-menu" class="navbar-item">
                 <a href="#contacto">Contacto</a>
             </li>
         </ul>
@@ -195,13 +195,31 @@
                 </div>
             </section>
 
+
+
+            <!--Sección Sobre mí-->
+            <section id="sobremi" >
+                <div class="section-header">
+                    <h2>Sobre mí</h2>
+                </div>
+                <div >
+                    <div >
+                        <figure>
+                            <img class="imagen-bio" src="./images/javier-lindo.jpg" alt="Javier Lindo">
+                            <figcaption>
+                                <b>Javier Lindo Paredes</b>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </section>
             <!--Sección contacto-->
             <section id="contacto" >
                 <div class="section-header" >
                     <h2>Contacta conmigo</h2>
                 </div>
                 <!--Formulario de contacto-->
-                <form name="contacto" id="contacto" method="get">
+                <form name="contactoForm" id="contactoForm" method="get">
                 <div class="row-flex-center bottom-line"> 
                     <div>
                          <div class="form-row">
@@ -225,7 +243,7 @@
                     <div>
                         <div class="form-row">
                             <label for="mensaje">¿Qué necesitas?</label>
-                            <textarea id="mensaje" name="mensaje"  rows="8" cols="30" placeholder="Aquí va tu mensaje" ></textarea>
+                            <textarea id="mensaje" name="mensaje"  rows="7" cols="30" placeholder="Aquí va tu mensaje" ></textarea>
                         </div>
                         <div class="form-row">
                             <label for="motivo">¿Cómo me conociste?</label>
@@ -234,9 +252,13 @@
                                   <option value="buscador" >En Internet</option>
                                   <option value="linkedin" >En Linkedin</option>
                                   <option value="blog" >Leyendo tu blog</option>
-                                  <option value="otros" >Otros</option>
+                                  <option value="otro" >Otros</option>
                             </select>
-                        </div>                         
+                        </div>
+                        <div id="inputOculto" class="form-row oculto">
+                            <label for="otros">¿Dónde?</label>
+                            <input type="text" id="otros" name="otros" placeholder="Escribe lugar" >
+                        </div>
                     </div>                 
                 </div>
                 <div class="botonera" >
@@ -251,14 +273,16 @@
                     <div >
                         Petición Ajax
                     </div>
-                </section>
+            </section>
 
     </main>
 
 
     <!--Pie de página-->
     <footer class="footer">
-
+        <div>
+            2007 - <cite>Javier Lindo Paredes</cite>
+        </div>
     </footer>
     <script src="./js/panels.js" ></script>
     <script src="./js/scroll.js" ></script>

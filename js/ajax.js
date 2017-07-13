@@ -1,4 +1,3 @@
-`use strict`
 
 var XHR;
 
@@ -6,8 +5,8 @@ if(window.XMLHttpRequest){
     XHR = new XMLHttpRequest();
 }
 
-//XHR.open("GET", "http://localhost:8000/api/task/1", true);
-XHR.open("POST", "http://localhost:8000/api/task", true);
+XHR.open("GET", "http://localhost:8000/api/task", true);
+//XHR.open("POST", "http://localhost:8000/api/task", true);
 XHR.setRequestHeader("Content-Type", "application/json");
 
 
@@ -23,6 +22,6 @@ XHR.onreadystatechange = function(){
 }
 
 
-XHR.send(JSON.stringify({"name": "Petición martes"}));
+//XHR.send(JSON.stringify({"name": "Petición martes"}));
 
-//XHR.send();
+XHR.send();
