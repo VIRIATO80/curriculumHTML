@@ -26,7 +26,7 @@ mensaje.addEventListener('blur', contarPalabras);
 var formulario = document.getElementById("contactoForm");
 
 function enviar(event){
-
+   grabarFormulario(); 
    event.preventDefault();
 }
 
@@ -43,4 +43,18 @@ seleccionable.addEventListener('change', function(){
        document.getElementById('inputOculto').classList.add('oculto');
    }
 });
+
+//Función auxiliar que crea un objeto JSON con los valores del formulario introducidos
+function grabarFormulario(){
+
+var nombre = formulario.nombre.value;
+var email = formulario.email.value;
+var persona = {
+    "nombre":nombre,
+    "email": email
+}
+
+grabarPersonaAjax(persona);
+formulario.reset();
+}
 

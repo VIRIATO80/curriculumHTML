@@ -38,11 +38,9 @@ function getElementByIdAndScroll(id){
 function scrollToElement(element){
     var jump = (element.getBoundingClientRect().top - 70) * 0.2;
 
-    var isIE = /*@cc_on!@*/false || !!document.documentMode;
-    if(isIE)
-        document.documentElement.scrollTop += jump;
-    else
-        document.body.scrollTop += jump;
+    document.documentElement.scrollTop += jump;
+
+    document.body.scrollTop += jump;
 
     if(!element.lastJump || element.lastJump > Math.abs(jump)){
         element.lastJump = Math.abs(jump);        
@@ -75,8 +73,6 @@ window.onscroll = function() {
         if (sections[i] <= scrollPosition) {
             limpiarEstilosMenu();
             document.getElementById(i+'-menu').classList.add('active');
-            //document.querySelector('.active').setAttribute('class', ' ');
-            //document.querySelector('a[href*=' + i + ']').setAttribute('class', 'active');
         }
     }
 };

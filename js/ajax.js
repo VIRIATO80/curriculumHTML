@@ -1,27 +1,58 @@
 
-var XHR;
 
-if(window.XMLHttpRequest){
-    XHR = new XMLHttpRequest();
-}
+function pintarPersonas(personas) {
 
-XHR.open("GET", "http://localhost:8000/api/task", true);
-//XHR.open("POST", "http://localhost:8000/api/task", true);
-XHR.setRequestHeader("Content-Type", "application/json");
+    var divListaVisitas = document.getElementById('divListaVisitas');
+    //Limpiamos el contenido;
+    divListaVisitas.innerHTML='';
 
-
-
-XHR.onreadystatechange = function(){
-    if(XHR.readyState === 4 && XHR.status == 200){
-        console.log(JSON.parse(XHR.responseText));
-    }else if(XHR.readyState === 4 && XHR.status == 201) {
-        console.log(XHR.responseText);
-    }else if(XHR.readyState === 4 && XHR.status == 404) {
-        console.log("Página no encontrada");
-    }    
+	if (personas.length == 0) {
+		divListaVisitas.innerHTML='Puedes ser el primero en escribirme';
+	} else {
+		var nuevoContenido = '<ul>';
+		for (var i = 0; i < personas.length; i++) {
+			nuevoContenido += '<li><strong>' + personas[i].nombre + '</strong> (' + personas[i].email + ') </li>';
+		}
+        nuevoContenido += '</ul>';
+		divListaVisitas.innerHTML=nuevoContenido;
+	}
 }
 
 
-//XHR.send(JSON.stringify({"name": "Petición martes"}));
 
-XHR.send();
+function leerListado(){
+    var XHR = new XMLHttpRequest();
+    XHR.open("GET", "http://127.0.0.1:8000/api/personas",true);
+    XHR.setRequestHeader("Content-Type", "application/json");
+      XHR.onreadystatechange = function () {
+        if (XHR.readyState === 4 && XHR.status == 200 ) {
+            personas = JSON.parse(XHR.responseText);            
+            pintarPersonas(personas);
+        } else if (XHR.readyState === 4 && XHR.status === 404) {
+            pintarPersonas([]);
+        }
+    }
+
+    XHR.send();     
+}
+
+
+function grabarPersonaAjax (persona) {
+    var XHR = new XMLHttpRequest();
+    XHR.open("POST", "http://127.0.0.1:8000/api/personas",true);
+    XHR.setRequestHeader("Content-Type", "application/json");
+
+    XHR.onreadystatechange = function () {
+        if (XHR.readyState === 4 && XHR.status == 201 ) {
+            leerListado();
+        } else if (XHR.readyState === 4 && XHR.status === 404) {
+            console.log("Página no encontrada");
+        }
+    }
+
+    XHR.send(JSON.stringify(persona));
+}
+
+
+
+leerListado();
