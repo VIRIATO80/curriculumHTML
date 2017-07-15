@@ -5,8 +5,7 @@ function pintarPersonas(personas) {
     var divListaVisitas = document.getElementById('divListaVisitas');
     //Limpiamos el contenido;
     divListaVisitas.innerHTML='';
-
-	if (personas.length == 0) {
+	if (personas == null || personas.length === 0) {
 		divListaVisitas.innerHTML='Puedes ser el primero en escribirme';
 	} else {
 		var nuevoContenido = '<ul>';

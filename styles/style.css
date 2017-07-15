@@ -20,6 +20,10 @@ ul > li {
     list-style-type: none;
 }
 
+h3 {
+    margin: 45px;
+}
+
 .container {
     width: 100%;
     margin: 0 auto;
@@ -249,7 +253,7 @@ ul > li {
 
     /*Contenedores Flex */
     .panelExperiencia {
-      height:100vh;
+      height: 100vh;
       overflow: hidden;
       display: flex;
     }
@@ -282,6 +286,7 @@ ul > li {
       display:flex;
       justify-content: center;
       align-items: center;
+        overflow: hidden;
     }
     
     .panel p {
@@ -294,7 +299,7 @@ ul > li {
     }
 
     .panel > .fechaExperiencia { 
-        transform: translateY(-100%); 
+        transform: translateY(-100%);
         padding-top: 35px;
     }
 
@@ -311,6 +316,7 @@ ul > li {
         margin-left: 20px;
      }
 
+
     .panel.open {
       flex: 5;
       font-size:30px;
@@ -319,6 +325,7 @@ ul > li {
     .panel.open-active > *{ 
         transform: translateY(0); 
     }
+
 
     /*Formulario de contacto */
     .form-row{
