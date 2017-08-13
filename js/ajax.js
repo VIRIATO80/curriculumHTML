@@ -21,7 +21,7 @@ function pintarPersonas(personas) {
 
 function leerListado(){
     var XHR = new XMLHttpRequest();
-    XHR.open("GET", "http://127.0.0.1:8000/api/personas",true);
+    XHR.open("GET", "/api/personas",true);
     XHR.setRequestHeader("Content-Type", "application/json");
       XHR.onreadystatechange = function () {
         if (XHR.readyState === 4 && XHR.status == 200 ) {
@@ -38,7 +38,7 @@ function leerListado(){
 
 function grabarPersonaAjax (persona) {
     var XHR = new XMLHttpRequest();
-    XHR.open("POST", "http://127.0.0.1:8000/api/personas",true);
+    XHR.open("POST", "/api/personas",true);
     XHR.setRequestHeader("Content-Type", "application/json");
 
     XHR.onreadystatechange = function () {
